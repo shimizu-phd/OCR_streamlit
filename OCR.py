@@ -28,7 +28,7 @@ if uploaded_file is not None:
     bytes_io = io.BytesIO(bytes_data)
 
     text = []
-    analyzed_img = open(img_path, "rb")
+
     read_response = computervision_client.read_in_stream(bytes_io, raw=True)
     read_operation_location = read_response.headers["Operation-Location"]
     operation_id = read_operation_location.split("/")[-1]
