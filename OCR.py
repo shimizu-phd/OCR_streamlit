@@ -10,8 +10,8 @@ from PIL import ImageDraw
 import time
 
 
-subscription_key = st.secrets('subscription_key')
-endpoint = st.secrets('endpoint')
+subscription_key = st.secrets['subscription_key']
+endpoint = st.secrets['endpoint']
 
 computervision_client = ComputerVisionClient(endpoint, CognitiveServicesCredentials(subscription_key))
 
