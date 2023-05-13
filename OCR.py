@@ -8,6 +8,7 @@ from PIL import Image
 from PIL import ImageDraw
 
 import time
+import io
 
 
 subscription_key = st.secrets['subscription_key']
@@ -20,13 +21,15 @@ uploaded_file = st.file_uploader('Chose an image...', type=['jpg', 'png'])
 
 if uploaded_file is not None:
     img = Image.open(uploaded_file)
-    img_path = f'./images/{uploaded_file.name}'
-    img.save(img_path)
     draw = ImageDraw.Draw(img)
+    # uploaded_fileをbaytes型に変更
+    bytes_data = uploaded_file.getvalue()
+    # uploaded_fileをbaytesIO型に変更
+    bytes_io = io.BytesIO(bytes_data)
 
     text = []
     analyzed_img = open(img_path, "rb")
-    read_response = computervision_client.read_in_stream(analyzed_img, raw=True)
+    read_response = computervision_client.read_in_stream(bytes_io, raw=True)
     read_operation_location = read_response.headers["Operation-Location"]
     operation_id = read_operation_location.split("/")[-1]
 
