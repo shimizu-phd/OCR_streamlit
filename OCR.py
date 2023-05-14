@@ -17,7 +17,7 @@ endpoint = st.secrets['endpoint']
 computervision_client = ComputerVisionClient(endpoint, CognitiveServicesCredentials(subscription_key))
 
 st.title('OCR')
-uploaded_file = st.file_uploader('Chose an image...', type=['jpg', 'png'])
+uploaded_file = st.file_uploader('Chose an image...', type=['jpg', 'jpeg', 'png'])
 
 if uploaded_file is not None:
     img = Image.open(uploaded_file)
