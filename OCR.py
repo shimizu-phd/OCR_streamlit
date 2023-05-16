@@ -46,7 +46,7 @@ if uploaded_file is not None:
                 text.append(line.text)
                 draw.rectangle([(min(line.bounding_box[0],line.bounding_box[6]) , min(line.bounding_box[1], line.bounding_box[3])), (max(line.bounding_box[2], line.bounding_box[4]), max(line.bounding_box[5],line.bounding_box[7]))],
                                fill=None, outline='green', width=5)
-    st.image(img)
+    st.image(img, use_column_width=True)
 
     text_line = '  \n'.join(text)
     st.markdown('**認識されたテキスト**')
