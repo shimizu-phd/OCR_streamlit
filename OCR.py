@@ -21,6 +21,7 @@ uploaded_file = st.file_uploader('Chose an image...', type=['jpg', 'jpeg', 'png'
 
 if uploaded_file is not None:
     img = Image.open(uploaded_file)
+    w, h = im.size
     draw = ImageDraw.Draw(img)
     # uploaded_fileをbaytes型に変更してバイナリーデータを取ってくる。
     bytes_data = uploaded_file.getvalue()
@@ -45,7 +46,7 @@ if uploaded_file is not None:
             for line in text_result.lines:
                 text.append(line.text)
                 draw.rectangle([(min(line.bounding_box[0],line.bounding_box[6]) , min(line.bounding_box[1], line.bounding_box[3])), (max(line.bounding_box[2], line.bounding_box[4]), max(line.bounding_box[5],line.bounding_box[7]))],
-                               fill=None, outline='green', width=5)
+                               fill=None, outline='green', width=w/100)
     st.image(img, use_column_width=True)
 
     text_line = '  \n'.join(text)
