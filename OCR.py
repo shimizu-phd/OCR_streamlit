@@ -21,7 +21,7 @@ uploaded_file = st.file_uploader('Chose an image...', type=['jpg', 'jpeg', 'png'
 
 if uploaded_file is not None:
     img = Image.open(uploaded_file)
-    w, h = im.size
+    w, h = img.size
     draw = ImageDraw.Draw(img)
     # uploaded_fileをbaytes型に変更してバイナリーデータを取ってくる。
     bytes_data = uploaded_file.getvalue()
